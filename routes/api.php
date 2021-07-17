@@ -19,7 +19,6 @@ Route::group(['middleware' => ['api'], 'prefix' => '/v1/users'], function () {
     Route::get('{id}/reservations', [ReservationController::class, 'show']);
 
     Route::get('', [UserController::class, 'index']);
-    // Route::get('like', [LikeController::class, 'index']);
 });
 
 Route::group(['middleware' => ['api'], 'prefix' => '/v1/shops'], function () {

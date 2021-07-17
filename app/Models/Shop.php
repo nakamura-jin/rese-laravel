@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\User;
 
 class Shop extends Model
 {
@@ -35,10 +33,6 @@ class Shop extends Model
     {
         return $this->hasMany(Reservation::class);
     }
-
-    // public function users() {
-    //     return $this->belongsToMany(User::class, Like::class);
-    // }
 
     public function like()
     {

@@ -3,25 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
-use App\Models\User;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        // 'user_id' => 'required',
-        // 'shop_id' => 'required',
-        // 'start_time' => 'required|date|after:today',
-        // 'people' => 'required'
-    }
 
     /**
      * Store a newly created resource in storage.

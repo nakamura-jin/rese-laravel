@@ -25,10 +25,6 @@ class User extends Model
         'password' => 'required|min:6'
     );
 
-    // public function shops() {
-    //     return $this->belongsToMany(Shop::class);
-    // }
-
     public function reservation()
     {
         return $this->hasOne(Reservation::class);
