@@ -6,7 +6,9 @@ use App\Models\Genre;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Like;
+use App\Models\Review;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -16,9 +18,8 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
-
         $items = Shop::all();
         foreach ($items as $item) {
             $area = Area::where('id', $item->area_id)->first();
@@ -27,7 +28,10 @@ class ShopController extends Controller
             $item->genre_name = $genre->name;
             $like = Like::where('shop_id', $item->id)->get();
             $item->like = $like;
+            $review = Review::where('shop_id', $item->id)->get();
+            $item->review = $review;
         }
+
         return response()->json([
             'data' => $items
         ], 200);
@@ -65,6 +69,9 @@ class ShopController extends Controller
         $genre_id = $item->genre_id;
         $genre = Genre::find($genre_id);
         $item->genre_name = $genre->name;
+        // レビュー
+        $review = Review::where('shop_id', $id)->get();
+        $item->review = $review;
 
         if ($item) {
             return response()->json([

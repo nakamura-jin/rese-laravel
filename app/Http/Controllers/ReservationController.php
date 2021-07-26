@@ -8,37 +8,7 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, Reservation::$rules);
-        $createReservation = [
-            'user_id' => $request->user_id,
-            'shop_id' => $request->shop_id,
-            'date' => $request->date,
-            'time' => $request->time,
-            'people' => $request->people
-        ];
-        $item = Reservation::create($createReservation);
-        return response()->json([
-            'data' => $item
-        ], 200);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
+    public function index(Request $request) {
         $id = $request->id;
         $items = Reservation::where('user_id', $id)->get();
 
@@ -60,13 +30,66 @@ class ReservationController extends Controller
         }
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, Reservation::$rules);
+        $createReservation = [
+            'user_id' => $request->user_id,
+            'shop_id' => $request->shop_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'people' => $request->people
+        ];
+        $item = Reservation::create($createReservation);
+        return response()->json([
+            'data' => $item
+        ], 200);
+    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
+    public function show(Request $request)
+    {
+        $id = $request->id;
+        $item = Reservation::find($id);
+
+        // ショップ名取得
+        $shop_id = $item->shop_id;
+        $shop = Shop::find($shop_id);
+        $item->shopname = $shop->shopname;
+
+        if ($item) {
+            return response()->json([
+                'data' => $item
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => '該当のお店が見当たりません'
+            ], 404);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $update = [
+            'date' => $request->date,
+            'time' => $request->time,
+            'people' => $request->people
+        ];
+        $id = $request->id;
+        $item = Reservation::find($id)->update($update);
+
+        if($item) {
+            return response()->json([
+                'data' => $item
+            ], 201);
+        } else {
+            return response()->json([
+                'message' => '変更できませんでした'
+            ], 404);
+        }
+
+    }
+
+
     public function destroy(Request $request)
     {
         $id = $request->id;

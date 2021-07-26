@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Shop extends Model
 {
     use HasFactory;
@@ -37,5 +38,10 @@ class Shop extends Model
     public function like()
     {
         return $this->hasMany('App\Http\Models\Like');
+    }
+
+    public function review()
+    {
+        return $this->hasMany('App\Http\Model\Review');
     }
 }

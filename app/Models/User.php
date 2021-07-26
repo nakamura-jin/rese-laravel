@@ -11,8 +11,6 @@ class User extends Model
 {
     use HasFactory;
 
-    // protected $guarded = array('id');
-
     protected $fillable = ['id', 'name', 'email', 'password'];
 
     protected $primaryKey = 'id';
@@ -33,5 +31,10 @@ class User extends Model
     public function like()
     {
         return $this->hasMany('App\Http\Models\Like');
+    }
+
+    public function review()
+    {
+        return $this->hasMany('App\Http\Model\Review');
     }
 }

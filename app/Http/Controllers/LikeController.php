@@ -18,16 +18,6 @@ class LikeController extends Controller
      */
     public function index()
     {
-        // $items = Like::all();
-        // foreach ($items as $item) {
-        //     $user = User::where('id', $item->user_id)->first();
-        //     $item->user_id = $user->id;
-        //     $shop = Shop::where('id', $item->shop_id)->first();
-        //     $item->shop_name = $shop->name;
-        // }
-        // return response()->json([
-        //     'data' => $items
-        // ], 200);
         $items = Like::all();
         return response()->json([
             'data' => $items
