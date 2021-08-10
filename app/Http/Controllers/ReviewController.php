@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
-use App\Models\Shop;
-use App\Models\Area;
-use App\Models\Genre;
-
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -35,18 +31,19 @@ class ReviewController extends Controller
 
     }
 
-    public function show(Request $request){
-        $id = $request->user_id;
-        $items = Review::where('user_id', $id)->get();
+    public function show(Request $request)
+    {
 
-        if($items)
-        {
+        $id = $request->id;
+        $items = Review::where('shop_id', $id)->get();
+
+        if($items) {
             return response()->json([
                 'data' => $items
             ], 200);
         } else {
             return response()->json([
-                'message' => '見つかりません'
+                'message' => 'not found'
             ], 404);
         }
     }

@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Like;
 use App\Models\Review;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -22,14 +23,22 @@ class ShopController extends Controller
     {
         $items = Shop::all();
         foreach ($items as $item) {
+            // エリア
             $area = Area::where('id', $item->area_id)->first();
             $item->area_name = $area->name;
+            // ジャンル
             $genre = Genre::where('id', $item->genre_id)->first();
             $item->genre_name = $genre->name;
+            // お気に入り
             $like = Like::where('shop_id', $item->id)->get();
             $item->like = $like;
+            // レビュー
             $review = Review::where('shop_id', $item->id)->get();
             $item->review = $review;
+            // 予約
+            $reservation = Reservation::where('shop_id', $item->id)->get();
+            $item->reservation = $reservation;
+
         }
 
         return response()->json([
@@ -45,10 +54,21 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        $item = Shop::create($request->all());
+        $this->validate($request, Shop::$rules);
+        $createShop = [
+            'shopname' => $request->shopname,
+            'overview' => $request->overview,
+            'area_id' => $request->area_id,
+            'genre_id' => $request->genre_id,
+            'image' => $request->image,
+            'owner_id' => $request->owner_id
+        ];
+
+        $item = Shop::create($createShop);
         return response()->json([
             'data' => $item
         ], 201);
+
     }
 
     /**
@@ -72,6 +92,9 @@ class ShopController extends Controller
         // レビュー
         $review = Review::where('shop_id', $id)->get();
         $item->review = $review;
+        // 予約
+        $reservation = Reservation::where('shop_id', $id)->get();
+        $item->reservation = $reservation;
 
         if ($item) {
             return response()->json([

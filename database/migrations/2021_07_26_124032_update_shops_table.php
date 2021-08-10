@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateShopsTableTable extends Migration
+class UpdateShopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,6 @@ class UpdateShopsTableTable extends Migration
             $table->string('owner_id');
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -27,8 +26,6 @@ class UpdateShopsTableTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

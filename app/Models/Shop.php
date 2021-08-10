@@ -18,6 +18,7 @@ class Shop extends Model
         'image' => 'required',
         'area_id' => 'required',
         'genre_id' => 'required',
+        'owner_id' => 'required',
     );
 
     public function area()
