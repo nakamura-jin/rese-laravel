@@ -43,6 +43,6 @@ class Shop extends Model
 
     public function review()
     {
-        return $this->hasMany('App\Http\Model\Review');
+        return $this->hasMany('App\Models\Review');
     }
 }

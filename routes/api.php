@@ -35,7 +35,7 @@ Route::group(['middleware' => ['api'], 'prefix' => '/v1/shops'], function () {
     Route::delete('reservation/{id}', [ReservationController::class, 'destroy']);
 
     Route::get('{id}/reviews', [ReviewController::class, 'show']);
-    Route::get('review', [ReviewController::class, 'index']);
+    Route::get('reviews', [ReviewController::class, 'index']);
     Route::get('area', [AreaController::class, 'index']);
 });
 

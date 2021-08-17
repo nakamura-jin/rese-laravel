@@ -24,6 +24,6 @@ class Review extends Model
 
     public function shop()
     {
-        return $this->belongsTo('App\Http\Models\Shop');
+        return $this->belongsTo('App\Models\Shop', 'shop_id');
     }
 }

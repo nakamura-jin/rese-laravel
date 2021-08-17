@@ -15,7 +15,7 @@ class Reservation extends Model
     public static $rules = array(
         'user_id' => 'required',
         'shop_id' => 'required',
-        'date' => 'required|date|after:today',
+        'date' => 'required|date|after:yesterday',
         'time' => 'required',
         'people' => 'required'
     );
