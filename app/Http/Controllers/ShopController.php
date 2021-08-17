@@ -92,8 +92,6 @@ class ShopController extends Controller
         // レビュー
         $review = Review::where('shop_id', $id)->get();
         $item->review = $review;
-
-
         // 予約
         $reservation = Reservation::where('shop_id', $id)->get();
         $item->reservation = $reservation;
