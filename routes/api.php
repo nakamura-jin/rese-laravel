@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => ['api'], 'prefix' => '/v1/users'], function () {
+Route::group(['prefix' => '/v1/users'], function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
     Route::get('{id}', [UserController::class, 'show']);
@@ -23,7 +23,7 @@ Route::group(['middleware' => ['api'], 'prefix' => '/v1/users'], function () {
     Route::get('', [UserController::class, 'index']);
 });
 
-Route::group(['middleware' => ['api'], 'prefix' => '/v1/shops'], function () {
+Route::group(['prefix' => '/v1/shops'], function () {
     Route::get('', [ShopController::class, 'index']);
     Route::get('{id}', [ShopController::class, 'show']);
     Route::post('{id}/like', [LikeController::class, 'store']);
@@ -39,7 +39,7 @@ Route::group(['middleware' => ['api'], 'prefix' => '/v1/shops'], function () {
     Route::get('area', [AreaController::class, 'index']);
 });
 
-Route::group(['middleware' => ['api'], 'prefix' => '/v1/owners'], function() {
+Route::group(['prefix' => '/v1/owners'], function() {
     Route::post('register', [AuthController::class, 'ownerRegister']);
     Route::post('login', [AuthController::class, 'ownerLogin']);
     Route::post('{id}/shop', [ShopController::class, 'store']);
