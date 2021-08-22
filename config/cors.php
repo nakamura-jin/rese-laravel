@@ -9,5 +9,4 @@ return [
     'exposed_headers' => false,
     'max_age' => false,
     'supports_credentials' => false,
-    'Access-Control-Allow-Origin' => ['*']
 ];
