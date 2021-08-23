@@ -15,7 +15,7 @@ class OwnerTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'id' => '1',
+            'id' => 'testowner',
             'name' => '佐藤　三郎',
             'email' => 'saburo@example.com',
             'password' => 'password'
