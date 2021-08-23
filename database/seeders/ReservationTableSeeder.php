@@ -24,14 +24,5 @@ class ReservationTableSeeder extends Seeder
         $item = new Reservation;
         $item->fill($param)->save();
 
-        $param = [
-            'user_id' => '2',
-            'shop_id' => 2,
-            'date' => '2021-07-23',
-            'time' => '18:00',
-            'people' => 3
-        ];
-        $item = new Reservation;
-        $item->fill($param)->save();
     }
 }
