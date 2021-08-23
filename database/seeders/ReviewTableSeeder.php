@@ -15,7 +15,7 @@ class ReviewTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'user_id' => 'sxVMeYTirdaG3AoSWtkEspxiDE63',
+            'user_id' => '1',
             'shop_id' => 1,
             'star' => 4
         ];
