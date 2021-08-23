@@ -20,11 +20,14 @@ class CreateShopsTable extends Migration
             $table->string('image');
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('genre_id');
+            $table->string('owner_id');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade');
+
         });
     }
 
