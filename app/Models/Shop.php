@@ -45,4 +45,9 @@ class Shop extends Model
     {
         return $this->hasMany('App\Models\Review');
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
 }

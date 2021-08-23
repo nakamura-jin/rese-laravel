@@ -19,4 +19,9 @@ class Owner extends Model
         'email' => 'required|email',
         'password' => 'required|min:6'
     );
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class);
+    }
 }
