@@ -55,21 +55,21 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, Shop::$rules);
-        // $createShop = [
-        //     'shopname' => $request->shopname,
-        //     'overview' => $request->overview,
-        //     'area_id' => $request->area_id,
-        //     'genre_id' => $request->genre_id,
-        //     'image' => $request->image,
-        //     'owner_id' => $request->owner_id
-        // ];
+        $this->validate($request, Shop::$rules);
+        $createShop = [
+            'shopname' => $request->shopname,
+            'overview' => $request->overview,
+            'area_id' => $request->area_id,
+            'genre_id' => $request->genre_id,
+            'image' => $request->image,
+            'owner_id' => $request->owner_id
+        ];
 
-        // $item = Shop::create($createShop);
-        // return response()->json([
-        //     'data' => $item
-        // ], 201);
-        Storage::disk('s3')->put('/', $request->file('image'), 'public');
+        $item = Shop::create($createShop);
+        return response()->json([
+            'data' => $item
+        ], 201);
+        
 
     }
 
