@@ -16,7 +16,7 @@ class ReservationTableSeeder extends Seeder
     {
         $param = [
             'user_id' => '1',
-            'shop_id' => 1,
+            'shop_id' => 5,
             'date' => '2021-10-10',
             'time' => '17:00',
             'people' => 2

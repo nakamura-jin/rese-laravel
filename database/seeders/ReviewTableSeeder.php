@@ -16,7 +16,7 @@ class ReviewTableSeeder extends Seeder
     {
         $param = [
             'user_id' => '1',
-            'shop_id' => 1,
+            'shop_id' => 5,
             'star' => 4
         ];
         $item = new Review;

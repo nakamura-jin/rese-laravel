@@ -16,7 +16,7 @@ class LikeTableSeeder extends Seeder
     {
         $param = [
             'user_id' => '1',
-            'shop_id' => 1,
+            'shop_id' => 5,
         ];
         $item = new Like;
         $item->fill($param)->save();
